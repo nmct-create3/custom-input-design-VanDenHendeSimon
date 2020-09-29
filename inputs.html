@@ -44,8 +44,11 @@
                             </h5>
                             <ul class="o-list c-option-list">
                                 <li class="c-form-field c-form-field--option c-option-list__item">
+                                    <!-- Native checkbox verbergen (hidden), maar wel accessable voor screen readers ( niet display none dus ) -->
+                                    <!-- Checkbox int label zetten ( kaderke rond dienen svg ) -->
                                     <input class="c-option c-option--hidden" type="checkbox" id="checkbox1" checked>
                                     <label class="c-label c-label--option c-custom-option" for="checkbox1">
+                                        <!-- die span moet je er laten uitzien als een checkbox -->
                                         <span class="c-custom-option__fake-input c-custom-option__fake-input--checkbox">
                                             <svg class="c-custom-option__symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6.75">
                                                 <path d="M4.75,9.5a1,1,0,0,1-.707-.293l-2.25-2.25A1,1,0,1,1,3.207,5.543L4.75,7.086,8.793,3.043a1,1,0,0,1,1.414,1.414l-4.75,4.75A1,1,0,0,1,4.75,9.5" transform="translate(-1.5 -2.75)"/>
@@ -57,6 +60,8 @@
                                 <li class="c-form-field c-form-field--option c-option-list__item">
                                     <input class="c-option c-option--hidden" type="checkbox" id="checkbox2">
                                     <label class="c-label c-label--option c-custom-option" for="checkbox2">
+                                        <!-- span rond maken ( border radius ) en daarin nen svg steken en aan of af zetten adhv css -->
+                                        <!-- :checked pseudo class + adjacent sibling om die label te pakken -->
                                         <span class="c-custom-option__fake-input c-custom-option__fake-input--checkbox">
                                             <svg class="c-custom-option__symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6.75">
                                                 <path d="M4.75,9.5a1,1,0,0,1-.707-.293l-2.25-2.25A1,1,0,1,1,3.207,5.543L4.75,7.086,8.793,3.043a1,1,0,0,1,1.414,1.414l-4.75,4.75A1,1,0,0,1,4.75,9.5" transform="translate(-1.5 -2.75)"/>
