@@ -660,12 +660,12 @@ input::placeholder {
   margin-right: var(--global-whitespace-sm);
 }
 
-.c-option-list  {
-    margin-bottom: var(--global-whitespace);
+.c-option-list {
+  margin-bottom: var(--global-whitespace);
 }
 
-.c-option-list__item  {
-    margin-bottom: calc(var(--global-whitespace) / 2);
+.c-option-list__item {
+  margin-bottom: calc(var(--global-whitespace) / 2);
 }
 
 .c-custom-option__symbol {
@@ -732,6 +732,98 @@ input::placeholder {
   transform: scale(1);
 }
 
+.c-custom-toggle {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  --custom-toggle-width: 48px;
+  --custom-toggle-height: 24px;
+}
+
+.c-toggle-list {
+  margin-bottom: var(--global-whitespace);
+}
+
+.c-toggle-list__item {
+  margin-bottom: calc(var(--global-whitespace) / 2);
+}
+
+.c-custom-toggle__fake-input {
+  display: block;
+  width: var(--custom-toggle-width);
+  height: var(--custom-toggle-height);
+  border-radius: calc(var(--custom-toggle-width) / 2);
+  border: var(--global-borderWidth) solid var(--global-input-borderColor);
+  margin-right: var(--global-whitespace-sm);
+  background-color: var(--global-color-neutral-xxxx-light);
+  /* box-shadow: var(--global-input-boxShadow); */
+
+  display: flex;
+  align-items: center;
+}
+
+.c-custom-toggle__fake-input::after {
+  content: "";
+  display: block;
+
+  background-color: white;
+
+  width: calc(
+    var(--custom-toggle-height) - calc(var(--global-borderWidth) * 2)
+  );
+  height: calc(
+    var(--custom-toggle-height) - calc(var(--global-borderWidth) * 2)
+  );
+
+  /* border: var(--global-borderWidth) solid var(--global-input-borderColor); */
+  border-radius: calc(var(--custom-toggle-width) / 2);
+  box-shadow: 2px 0 2px rgba(0, 0, 0, 0.05);
+
+  transition: all var(--global-transitionTiming-fast);
+}
+
+.c-option--hidden:checked
+  + .c-custom-toggle
+  .c-custom-toggle__fake-input::after {
+  transform: translateX(
+    calc(var(--custom-toggle-width) - var(--custom-toggle-height))
+  );
+}
+
+.c-option--hidden:checked + .c-custom-toggle .c-custom-toggle__fake-input {
+  background-color: var(--global-color-alpha);
+}
+
+.c-custom-toggle:hover .c-custom-toggle__fake-input {
+  border-color: var(--global-color-alpha-transparent);
+  box-shadow: var(--global-input-boxShadow);
+
+  /* border-width: calc(var(--global-borderWidth) * 2); */
+}
+
+.c-custom-toggle:active .c-custom-toggle__fake-input,
+.c-custom-toggle:focus .c-custom-toggle__fake-input {
+  border-color: var(--global-color-alpha-transparent);
+  border-width: calc(var(--global-borderWidth) * 2);
+  box-shadow: var(--global-input-boxShadow);
+}
+
+.c-option--hidden:active
+  + .c-custom-toggle
+  .c-custom-toggle__fake-input::after {
+  width: calc(var(--custom-toggle-height) * 1.1);
+}
+
+.c-option--hidden:active:checked
+  + .c-custom-toggle
+  .c-custom-toggle__fake-input::after {
+  width: calc(var(--custom-toggle-height) * 1.1);
+  transform: calc(
+    var(--custom-toggle-width) - var(--custom-toggle-height) -
+      calc(var(--custom-toggle-height) * 1.1)
+  );
+}
 /*
     Component: Label
     ---
