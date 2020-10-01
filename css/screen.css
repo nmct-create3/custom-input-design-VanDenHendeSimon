@@ -1390,7 +1390,7 @@ No media query since this is the default in mobile first design
     --global-input-backgroundColor: var(--global-color-neutral-xxxx-dark);
     --global-input-color: white;
     --global-input-borderColor: var(--global-color-neutral-xxxx-dark);
-    --global-input-hover-borderColor: var(--global-color-neutral-x-light);
+    --global-input-hover-borderColor: var(--global-color-neutral);
     --global-input-focus-borderColor: var(--global-color-alpha);
     --global-input-boxShadow: 0 0 0 3px var(--global-color-alpha-x-transparent);
   }
