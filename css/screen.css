@@ -860,6 +860,31 @@ input::placeholder {
     )
   );
 }
+
+.c-custom-select {
+  display: block;
+  position: relative;
+}
+
+.c-custom-select__input {
+  cursor: pointer;
+}
+
+.c-custom-select__symbol {
+  position: absolute;
+
+  top: 50%;
+  right: var(--global-whitespace-sm);
+
+  transform: translateY(-50%);
+
+  fill: var(--global-color-neutral-xx-dark);
+  width: 24px;
+  height: 24px;
+
+  pointer-events: none;
+}
+
 /*
     Component: Label
     ---
