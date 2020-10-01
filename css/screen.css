@@ -776,6 +776,11 @@ input::placeholder {
   );
   --custom-toggle__symbol-scaleFactor: 0.2;
 
+  --custom-toggle-backgroundColor: var(--global-color-neutral-xxxx-light);
+  --custom-toggle__symbol-backgroundColor: white;
+  --custom-toggle__symbol--enabled-backgroundColor: var(--global-color-alpha);
+  --custom-toggle-borderColor: var(--global-input-borderColor);
+
   transition: var(--global-transitionTiming-alpha);
 }
 
@@ -808,9 +813,9 @@ input::placeholder {
   width: var(--custom-toggle-width);
   height: var(--custom-toggle-height);
   border-radius: calc(var(--custom-toggle-width) / 2);
-  border: var(--global-borderWidth) solid var(--global-input-borderColor);
+  border: var(--global-borderWidth) solid var(--custom-toggle-borderColor);
   margin-right: var(--global-whitespace-sm);
-  background-color: var(--global-color-neutral-xxxx-light);
+  background-color: var(--custom-toggle-backgroundColor);
   /* box-shadow: var(--global-input-boxShadow); */
 
   display: flex;
@@ -821,7 +826,7 @@ input::placeholder {
   content: "";
   display: block;
 
-  background-color: white;
+  background-color: var(--custom-toggle__symbol-backgroundColor);
 
   width: var(--custom-toggle__symbol-size);
   height: var(--custom-toggle__symbol-size);
@@ -841,7 +846,7 @@ input::placeholder {
 }
 
 .c-option--hidden:checked + .c-custom-toggle .c-custom-toggle__fake-input {
-  background-color: var(--global-color-alpha);
+  background-color: var(--custom-toggle__symbol--enabled-backgroundColor);
   /* border: calc(var(--global-borderWidth) * 2) solid var(--global-color-alpha-transparent); */
 }
 
@@ -882,6 +887,15 @@ input::placeholder {
         )
     )
   );
+}
+
+@media (prefers-color-scheme: dark) {
+  .c-custom-toggle {
+    --custom-toggle-backgroundColor: var(--global-color-neutral-xxxx-dark);
+    --custom-toggle__symbol-backgroundColor: var(--global-color-neutral-xxxx-light);
+    --custom-toggle__symbol--enabled-backgroundColor: var(--global-color-alpha);
+    --custom-toggle-borderColor: var(--global-color-neutral-xxxx-dark)
+  }
 }
 
 .c-custom-select {
@@ -1371,6 +1385,13 @@ No media query since this is the default in mobile first design
   :root {
     --global-page-color: White;
     --global-page-backgroundColor: var(--global-color-neutral-xxxx-dark);
-    --global-page-secondaryTextColor: var(--global-color-neutral-xx-light);
+    --global-page-secondaryTextColor: var(--global-color-neutral-xxx-light);
+
+    --global-input-backgroundColor: var(--global-color-neutral-xxxx-dark);
+    --global-input-color: white;
+    --global-input-borderColor: var(--global-color-neutral-xxxx-dark);
+    --global-input-hover-borderColor: var(--global-color-neutral-x-light);
+    --global-input-focus-borderColor: var(--global-color-alpha);
+    --global-input-boxShadow: 0 0 0 3px var(--global-color-alpha-x-transparent);
   }
 }
