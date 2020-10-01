@@ -724,6 +724,7 @@ input::placeholder {
 
 .c-custom-option:active .c-custom-option__fake-input,
 .c-custom-option:focus .c-custom-option__fake-input {
+  /* werkt als ik klik, niet als ik tab */
   border-color: var(--global-color-alpha-transparent);
   border-width: calc(var(--global-borderWidth) * 2);
   box-shadow: var(--global-input-boxShadow);
