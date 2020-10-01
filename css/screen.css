@@ -39,6 +39,11 @@
   --global-color-neutral-xxx-dark: #35374d;
   --global-color-neutral-xxxx-dark: #20223a;
 
+  /* page colors */
+  --global-page-color: var(--global-color-neutral-xxxx-dark);
+  --global-page-backgroundColor: var(--global-color-neutral-xxxx-light);
+  --global-page-secondaryTextColor: var(--global-color-neutral-xx-dark);
+
   /* input stuff */
   --global-input-backgroundColor: White;
   --global-input-color: var(--global-color-neutral-xxxx-dark);
@@ -86,6 +91,9 @@ html {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  color: var(--global-page-color);
+  background-color: var(--global-page-backgroundColor);
 }
 
 *,
@@ -542,15 +550,23 @@ input::placeholder {
 }
 
 .c-logo__path--1 {
-  fill: var(--global-color-neutral-xxxx-dark);
+  fill: var(--logo__path--1--fill, --global-color-neutral-xxxx-dark);
 }
 
 .c-logo__path--2 {
-  fill: var(--global-color-alpha);
+  fill: var(--logo__path--2--fill, --global-color-alpha);
 }
 
 .c-logo__path--3 {
-  fill: var(--color-alpha-x-dark);
+  fill: var(--logo__path--3--fill, --color-alpha-x-dark);
+}
+
+@media (prefers-color-scheme: dark) {
+  .c-logo {
+    --logo__path--1--fill: White;
+    --logo__path--2--fill: var(--logo__path--1--fill);
+    --logo__path--3--fill: var(--logo__path--1--fill);
+  }
 }
 
 /*
@@ -560,7 +576,8 @@ input::placeholder {
 */
 
 .c-card {
-  background-color: White;
+  --c-card-backgroundColor: white;
+  background-color: var(--c-card-backgroundColor);
   margin-bottom: var(--global-whitespace);
   border-radius: var(--global-borderRadius);
   box-shadow: 0 0 0 var(--global-borderWidth) rgba(0, 0, 0, 0.05),
@@ -603,6 +620,12 @@ input::placeholder {
 
   .c-card__title {
     margin-bottom: var(--global-whitespace-xl);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .c-card {
+    --c-card-backgroundColor: var(--global-color-neutral-xxx-dark);
   }
 }
 
@@ -878,7 +901,7 @@ input::placeholder {
 
   transform: translateY(-50%);
 
-  fill: var(--global-color-neutral-xx-dark);
+  fill: var(--global-page-secondaryTextColor);
   width: 24px;
   height: 24px;
 
@@ -896,7 +919,7 @@ input::placeholder {
   font-size: 14px;
   padding-bottom: var(--global-whitespace-xs);
   line-height: calc(var(--global-baseline) * 2);
-  color: var(--global-color-neutral-xx-dark);
+  color: var(--global-page-secondaryTextColor);
 
   cursor: pointer;
 }
@@ -1341,5 +1364,13 @@ No media query since this is the default in mobile first design
   h2,
   h3 {
     page-break-after: avoid;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --global-page-color: White;
+    --global-page-backgroundColor: var(--global-color-neutral-xxxx-dark);
+    --global-page-secondaryTextColor: var(--global-color-neutral-xx-light);
   }
 }
