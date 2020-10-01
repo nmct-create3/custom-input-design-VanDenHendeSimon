@@ -737,6 +737,8 @@ input::placeholder {
   align-items: center;
   cursor: pointer;
 
+  width: 100%;
+
   --custom-toggle-width: 48px;
   --custom-toggle-height: 24px;
 
@@ -754,12 +756,28 @@ input::placeholder {
   transition: var(--global-transitionTiming-alpha);
 }
 
+.c-toggle__label--inverted {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+.c-toggle__label--inverted .c-custom-toggle__fake-input {
+  margin-right: 0;
+}
+
 .c-toggle-list {
   margin-bottom: var(--global-whitespace);
+  --c-toggle-list-whitespace: calc(var(--global-whitespace-xs) * 2);
 }
 
 .c-toggle-list__item {
-  margin-bottom: calc(var(--global-whitespace) / 2);
+  margin-bottom: var(--c-toggle-list-whitespace);
+}
+
+.c-toggle-list__item + .c-toggle-list__item {
+  padding-top: var(--c-toggle-list-whitespace);
+  border-top: var(--global-borderWidth) solid var(--global-input-borderColor);
 }
 
 .c-custom-toggle__fake-input {
