@@ -739,6 +739,14 @@ input::placeholder {
 
   --custom-toggle-width: 48px;
   --custom-toggle-height: 24px;
+
+  --custom-toggle__symbol-offset: var(--global-whitespace-xs);
+  --custom-toggle__symbol-size: calc(var(--custom-toggle-height) - var(--custom-toggle__symbol-offset));
+
+  --custom-toggle__symbol-endPos: calc(var(--custom-toggle-width) - var(--custom-toggle__symbol-size) - var(--custom-toggle__symbol-offset));
+  --custom-toggle__symbol-scaleFactor: 0.2;
+
+  transition: var(--global-transitionTiming-alpha);
 }
 
 .c-toggle-list {
@@ -769,15 +777,12 @@ input::placeholder {
 
   background-color: white;
 
-  width: calc(
-    var(--custom-toggle-height) - calc(var(--global-borderWidth) * 2)
-  );
-  height: calc(
-    var(--custom-toggle-height) - calc(var(--global-borderWidth) * 2)
-  );
+  width: var(--custom-toggle__symbol-size);
+  height: var(--custom-toggle__symbol-size);
+  margin-left: calc(var(--custom-toggle__symbol-offset) / 4);
 
   /* border: var(--global-borderWidth) solid var(--global-input-borderColor); */
-  border-radius: calc(var(--custom-toggle-width) / 2);
+  border-radius: calc(var(--custom-toggle__symbol-size) / 2);
   box-shadow: 2px 0 2px rgba(0, 0, 0, 0.05);
 
   transition: all var(--global-transitionTiming-fast);
@@ -786,9 +791,7 @@ input::placeholder {
 .c-option--hidden:checked
   + .c-custom-toggle
   .c-custom-toggle__fake-input::after {
-  transform: translateX(
-    calc(var(--custom-toggle-width) - var(--custom-toggle-height))
-  );
+  transform: translateX(var(--custom-toggle__symbol-endPos));
 }
 
 .c-option--hidden:checked + .c-custom-toggle .c-custom-toggle__fake-input {
@@ -812,17 +815,14 @@ input::placeholder {
 .c-option--hidden:active
   + .c-custom-toggle
   .c-custom-toggle__fake-input::after {
-  width: calc(var(--custom-toggle-height) * 1.1);
+  width: calc(var(--custom-toggle__symbol-size) * calc(1 + var(--custom-toggle__symbol-scaleFactor)));
 }
 
 .c-option--hidden:active:checked
   + .c-custom-toggle
   .c-custom-toggle__fake-input::after {
-  width: calc(var(--custom-toggle-height) * 1.1);
-  transform: calc(
-    var(--custom-toggle-width) - var(--custom-toggle-height) -
-      calc(var(--custom-toggle-height) * 1.1)
-  );
+    width: calc(var(--custom-toggle__symbol-size) * calc(1 + var(--custom-toggle__symbol-scaleFactor)));
+  transform: translateX(calc(var(--custom-toggle__symbol-endPos) - calc(var(--custom-toggle__symbol-size) * var(--custom-toggle__symbol-scaleFactor))));
 }
 /*
     Component: Label
